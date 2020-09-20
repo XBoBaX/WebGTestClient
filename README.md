@@ -1,4 +1,4 @@
-# WebGTestClienC++
+# WebGTestClient
 
 A C++ client library for Selenuim Driver
 
