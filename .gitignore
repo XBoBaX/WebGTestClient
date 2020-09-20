@@ -1,0 +1,10 @@
+# Visual Studio cache
+.vs/
+
+# Visual Studio Files
+*.vcx*
+Debug/
+
+# Cmake and build files
+build/
+
