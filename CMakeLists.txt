@@ -1,10 +1,35 @@
 cmake_minimum_required(VERSION 3.1)
 
-project(diplomWork)
+set(PROJECT_NAME diplomWork)
+project(${PROJECT_NAME})
 
-add_executable(diplomWork diplomWork.cpp)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED on)
+set(CMAKE_CXX_FLAGS "-g -Wall")
+
+
+# force static runtime libraries for msvc builds
+if(MSVC)
+  set(variables 
+    CMAKE_CXX_FLAGS_DEBUG
+    CMAKE_CXX_FLAGS_RELEASE
+	CMAKE_CXX_FLAGS_RELWITHDEBINFO
+	CMAKE_CXX_FLAGS_MINSIZEREL
+  )
+  foreach(variable ${variables})
+	if(${variable} MATCHES "/MD")
+	  string(REGEX REPLACE "/MD" "/MT" ${variable} "${${variable}}")
+	endif()
+  endforeach()
+endif()
+
+
+include_directories(libs)
+add_subdirectory(tests)
+
+#add_test(TestSerialization "./diplomWork")
 
 install(DIRECTORY
-		${CMAKE_SOURCE_DIR}/lib/
-		DESTINATION /usr/local/lib/${PROJECT_NAME}
+		${CMAKE_SOURCE_DIR}/libs/
+		DESTINATION /usr/local/libs/${PROJECT_NAME}
 		FILES_MATCHING PATTERN "*")
