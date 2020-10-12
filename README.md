@@ -15,4 +15,4 @@ cmake --build .
 cmake -Dtest=ON turns on the variable 'test'
 
 ## Run bin
-cd build/tests/Debug/diplomWork_test.exe
+build/tests/Debug/diplomWork_test.exe
