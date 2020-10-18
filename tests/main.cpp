@@ -11,7 +11,7 @@
 //		for (int i = 1; i < argc; ++i) {
 //			const std::string arg = argv[i];
 //			if (IsCommandLineArgument(arg, "browser")) {
-//				result.web_driver_url = webdriverxx::kDefaultWebDriverUrl;
+//				result.web_driver_url = webdriver::kDefaultWebDriverUrl;
 //				const std::string browser_name = GetCommandLineArgumentValue(arg);
 //				result.desired.Set("browserName", browser_name);
 //			}
