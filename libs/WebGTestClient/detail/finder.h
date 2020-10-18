@@ -1,5 +1,5 @@
 #ifndef DETAIL_FINDER_H
-#defineDETAIL_FINDER_H
+#define DETAIL_FINDER_H
 
 #include "shared.h"
 #include "resource.h"
