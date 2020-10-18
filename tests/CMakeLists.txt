@@ -11,6 +11,10 @@ set(SOURCE_FILES
 
 file(COPY pages DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
+# CURL
+# add_subdirectory(lib/curl-7.73.0-win64-mingw)
+include_directories(lib/curl-7.73.0-win64-mingw/include)
+list(APPEND LIBS ${CURL_LIBRARIES})
 
 ################################
 # Testing
