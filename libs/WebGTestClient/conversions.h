@@ -1,7 +1,7 @@
 #ifndef CONVERSIONS_H
 #define CONVERSIONS_H
 
-#include "detail/types.h"
+#include "types.h"
 #include "detail/error_handling.h"
 #include "detail/meta_tools.h"
 #include "picojson.h"

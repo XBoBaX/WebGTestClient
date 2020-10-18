@@ -3,7 +3,7 @@
 
 #include "by.h"
 #include "keys.h"
-#include "detail/types.h"
+#include "types.h"
 #include "detail/shared.h"
 #include "detail/keyboard.h"
 #include "detail/resource.h"

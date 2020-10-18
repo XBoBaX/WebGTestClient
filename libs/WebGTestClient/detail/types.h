@@ -1,90 +1,63 @@
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef DETAIL_TYPES_H
+#define DETAIL_TYPES_H
 
+#include "../conversions.h"
+#include "../capabilities.h"
+#include "../picojson.h"
 #include <string>
 
 namespace webdriver {
+	namespace detail {
 
-	typedef unsigned long long TimePoint;
-	typedef unsigned Duration;
-
-	struct Size {
-		int width;
-		int height;
-		Size() : width(0), height(0) {}
-	};
-
-	struct Point {
-		int x;
-		int y;
-		Point() : x(0), y(0) {}
-		Point(int x, int y) : x(x), y(y) {}
-	};
-
-	typedef Point Offset;
-
-	struct Cookie {
-		enum {
-			NoExpiry = 0
+		struct SessionRef {
+			std::string id;
+			Capabilities capabilities;
 		};
 
-		std::string name;
-		std::string value;
-		std::string path;
-		std::string domain;
-		bool secure;
-		bool http_only;
-		int expiry; // seconds since midnight, January 1, 1970 UTC
+		struct ElementRef {
+			std::string ref;
+		};
 
-		Cookie() : secure(false), http_only(false), expiry(NoExpiry) {}
-		Cookie(
-			const std::string& name,
-			const std::string& value,
-			const std::string& path = std::string(),
-			const std::string& domain = std::string(),
-			bool secure = false,
-			bool http_only = false,
-			int expiry = NoExpiry
-		)
-			: name(name)
-			, value(value)
-			, path(path)
-			, domain(domain)
-			, secure(secure)
-			, http_only(http_only)
-			, expiry(expiry)
-		{}
-
-		bool operator == (const Cookie& c) const {
-			return name == c.name
-				&& value == c.value
-				&& path == c.path
-				&& domain == c.domain
-				&& secure == c.secure
-				&& http_only == c.http_only
-				&& expiry == c.expiry
+		inline
+			picojson::value CustomToJson(const ElementRef& ref) {
+			return JsonObject()
+				.Set("ELEMENT", ref.ref)
 				;
 		}
-	};
 
-	namespace timeout {
+		inline
+			void CustomFromJson(const picojson::value& value, ElementRef& result) {
+			WEBDRIVER_CHECK(value.is<picojson::object>(), "ElementRef is not an object");
+			result.ref = FromJson<std::string>(value.get("ELEMENT"));
+			if (result.ref == "null") {
+				std::stringstream element(value.serialize());
+				std::string segment;
+				std::vector<std::string> strArr;
+				while (std::getline(element, segment, ':')) {
+					segment.erase(std::remove(segment.begin(), segment.end(), '{'), segment.end());
+					segment.erase(std::remove(segment.begin(), segment.end(), '"'), segment.end());
+					segment.erase(std::remove(segment.begin(), segment.end(), '}'), segment.end());
+					strArr.push_back(segment);
+				}
+				if (strArr.size() >= 1) {
+					std::stringstream ss;
+					ss << "{\"ELEMENT\":" << "\"" << strArr[1] << "\"}";
+					picojson::value jSon;
+					picojson::parse(jSon, ss);
+					result.ref = FromJson<std::string>(jSon.get("ELEMENT"));
+				}
+			}
+		}
 
-		typedef const char* Type;
-
-		Type const Implicit = "implicit";
-		Type const PageLoad = "page load";
-		Type const Script = "script";
+		inline
+			void CustomFromJson(const picojson::value& value, SessionRef& result) {
+			WEBDRIVER_CHECK(value.is<picojson::object>(), "Session information is not an object");
+			result.id = value.get("sessionId").to_str();
+			if (value.get("capabilities").is<picojson::object>())
+				result.capabilities = Capabilities(value.get("capabilities").get<picojson::object>());
+		}
 
 	} 
-
-	namespace mouse {
-		enum Button {
-			LeftButton = 0,
-			MiddleButton = 1,
-			RightButton = 2
-		};
-	} 
-
-}
+} 
 
 #endif
