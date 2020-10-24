@@ -42,4 +42,6 @@ namespace webdriver {
 
 } 
 
+#include "client.inl"
+
 #endif

@@ -31,5 +31,6 @@ namespace webdriver {
 	} // namespace detail
 } 
 
+#include "finder.inl"
 
 #endif

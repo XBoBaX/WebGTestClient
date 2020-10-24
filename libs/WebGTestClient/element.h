@@ -64,4 +64,6 @@ namespace webdriver {
 
 }
 
+#include "element.inl"
+
 #endif

@@ -7,8 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
-
-# force static runtime libraries for msvc builds
+# force static runtime libraries for msvc builds0
 if(MSVC)
   set(variables 
     CMAKE_CXX_FLAGS_DEBUG

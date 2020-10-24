@@ -1,12 +1,51 @@
 set(HEADER_FILES
+	#../libs/WebGTestClient/element.cpp
+	#../libs/WebGTestClient/client.cpp 
+	#../libs/WebGTestClient/detail/finder.cpp
+	#../libs/WebGTestClient/session.cpp		
 	../libs/WebGTestClient/WebDriver.h
+	../libs/WebGTestClient/by.h 
+	../libs/WebGTestClient/capabilities.h 
+	../libs/WebGTestClient/client.h 
+	../libs/WebGTestClient/conversions.h 
+	../libs/WebGTestClient/element.h 
+	../libs/WebGTestClient/errors.h 
+	../libs/WebGTestClient/js_args.h 
+	../libs/WebGTestClient/keys.h 
+	../libs/WebGTestClient/response_status_code.h 
+	../libs/WebGTestClient/session.h 
+	../libs/WebGTestClient/types.h 
+	../libs/WebGTestClient/wait.h 
+	../libs/WebGTestClient/wait_match.h 
+	../libs/WebGTestClient/webdriver.h 
+	../libs/WebGTestClient/window.h 
 	../libs/WebGTestClient/picojson.h
-	../libs/WebGTestClient/capabilities.h
+	../libs/WebGTestClient/browsers/chrome.h
+	../libs/WebGTestClient/detail/error_handling.h
+	../libs/WebGTestClient/detail/factories.h 
+	../libs/WebGTestClient/detail/factories_impl.h 
+	../libs/WebGTestClient/detail/finder.h 
+	../libs/WebGTestClient/detail/http_client.h 
+	../libs/WebGTestClient/detail/http_connection.h 
+	../libs/WebGTestClient/detail/http_request.h 
+	../libs/WebGTestClient/detail/keyboard.h 
+	../libs/WebGTestClient/detail/meta_tools.h 
+	../libs/WebGTestClient/detail/resource.h 
+	../libs/WebGTestClient/detail/shared.h 
+	../libs/WebGTestClient/detail/time.h 
+	../libs/WebGTestClient/detail/to_string.h 
+	../libs/WebGTestClient/detail/types.h 
+	#../libs/WebGTestClient/element.cpp
+	#../libs/WebGTestClient/client.cpp 
+	#../libs/WebGTestClient/detail/finder.cpp
+	#../libs/WebGTestClient/session.cpp
 	)
 
 set(SOURCE_FILES
 	main.cpp
 	diplomWork_test.cpp
+	client_test.cpp
+	environment.h
 	)
 
 file(COPY pages DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

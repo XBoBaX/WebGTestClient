@@ -1,4 +1,3 @@
-#include "session.h"
 #include "conversions.h"
 #include "detail/error_handling.h"
 #include "detail/types.h"

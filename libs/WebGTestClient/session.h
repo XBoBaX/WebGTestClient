@@ -111,4 +111,6 @@ namespace webdriver {
 
 } 
 
+#include "session.inl"
+
 #endif

@@ -11,4 +11,12 @@ namespace test {
 		ASSERT_EQ(1, 1) << "1 is not equal 0";
 	}
 
+	/*TEST(WebDriver, CreatesSession) {
+		Client client(GetWebDriverUrl());
+		size_t number_of_sessions_before = client.GetSessions().size();
+		WebDriver testee = CreateDriver();
+		size_t number_of_sessions_after = client.GetSessions().size();
+		ASSERT_EQ(number_of_sessions_before + 1, number_of_sessions_after);
+	}*/
+
 }
