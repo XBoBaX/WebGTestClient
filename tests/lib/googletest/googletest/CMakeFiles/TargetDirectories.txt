@@ -1,0 +1,14 @@
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/CMakeFiles/INSTALL.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/CMakeFiles/RUN_TESTS.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/CMakeFiles/ALL_BUILD.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/CMakeFiles/ZERO_CHECK.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googlemock/CMakeFiles/INSTALL.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googlemock/CMakeFiles/RUN_TESTS.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googlemock/CMakeFiles/gmock_main.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googlemock/CMakeFiles/gmock.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googlemock/CMakeFiles/ALL_BUILD.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googletest/CMakeFiles/gtest.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googletest/CMakeFiles/gtest_main.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googletest/CMakeFiles/INSTALL.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googletest/CMakeFiles/RUN_TESTS.dir
+C:/Users/vladimir/diplom/WebGTestClient/tests/lib/googletest/googletest/googletest/CMakeFiles/ALL_BUILD.dir
