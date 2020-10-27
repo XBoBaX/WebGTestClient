@@ -1,5 +1,5 @@
 #ifndef ENVIRONMENT_H
-#define WEBDRIVERXX_ENVIRONMENT_H
+#define ENVIRONMENT_H
 
 #include "../libs/WebGTestClient/WebDriver.h"
 #include "../libs/WebGTestClient/capabilities.h"

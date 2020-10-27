@@ -21,8 +21,8 @@ namespace test {
 	};
 
 	Client* TestClient::client = 0;
-
-	TEST_F(TestClient, GetsStatus) {
+	
+	/*TEST_F(TestClient, GetsStatus) {
 		picojson::object status = client->GetStatus();
 		ASSERT_TRUE(status["build"].is<picojson::object>());
 		ASSERT_TRUE(status["os"].is<picojson::object>());
@@ -35,6 +35,6 @@ namespace test {
 	TEST_F(TestClient, CreatesSession) {
 		Parameters params = GetParameters();
 		client->CreateSession(params.desired, params.required);
-	}
+	}*/
 
 } 

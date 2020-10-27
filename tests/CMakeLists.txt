@@ -50,9 +50,51 @@ set(SOURCE_FILES
 
 file(COPY pages DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
+
+
+
+#include(ExternalProject)
+
+#set(CURL_LIBRARY "-lcurl") 
+#find_package(CURL REQUIRED)
+#include_directories(${CURL_INCLUDE_DIR})
+#link_directories("${CURL_INCLUDE_DIR}/../lib")
+#list(APPEND LIBS libcurl wsock32 ws2_32)
+#list(APPEND DEPS curl_project)
+#add_definitions("-DCURL_STATICLIB")
+
+
+
+
+#include_directories(${CURL_INCLUDE_DIR})
+#arget_link_libraries(curl-demo ${CURL_LIBRARIES})
+
 # CURL
-include_directories(lib/curl-7.73.0-win64-mingw/include)
-list(APPEND LIBS ${CURL_LIBRARIES})
+#include_directories(lib/curl-7.73.0-win64-mingw/include)
+#list(APPEND LIBS ${CURL_LIBRARIES})
+
+include_directories("lib/curl-7.55.0/builds/libcurl-vc13-x64-release-dll-ipv6-sspi-winssl/include")
+link_directories("lib/curl-7.55.0/builds/libcurl-vc13-x64-release-dll-ipv6-sspi-winssl/lib")
+
+list(APPEND LIBS libcurl wsock32 ws2_32)
+list(APPEND DEPS curl_project)
+
+add_definitions("-DCURL_STATICLIB")
+
+#set(CURL_LIBRARY "-lcurl") 
+
+#find_package(CURL REQUIRED)
+#include_directories(${CURL_INCLUDE_DIR})
+
+
+
+#include_directories(${CURL_INCLUDE_DIR})
+
+#list(APPEND LIBS libcurl wsock32 ws2_32)
+#list(APPEND DEPS curl_project)
+#add_definitions(-DCURL_STATICLIB)
+
+
 
 ################################
 # Testing
@@ -73,7 +115,10 @@ if (test)
 	add_executable(${PROJECT_NAME}_test ${SOURCE_FILES} ${HEADER_FILES})
 	target_link_libraries(${PROJECT_NAME}_test ${LIBS})
 	add_test(${PROJECT_NAME}_test ${PROJECT_NAME})
+#	message(${CMAKE_CURRENT_BINARY_DIR})
+	configure_file(lib/curl-7.55.0/builds/libcurl-vc13-x64-release-dll-ipv6-sspi-winssl/bin/libcurl.dll ${CMAKE_CURRENT_BINARY_DIR}/Debug/libcurl.dll COPYONLY)
 
+#	message(${CMAKE_BINARY_DIR})
 endif()
 
 #if (WIN32)

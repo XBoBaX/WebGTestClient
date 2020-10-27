@@ -38,13 +38,22 @@ namespace test {
 	}
 }
 
+#include "../libs/WebGTestClient.h"
+#include "../libs/WebGTestClient/browsers/chrome.h""
+
+using namespace webdriver;
+
 int main(int argc, char** argv) {
-	::testing::InitGoogleTest(&argc, argv);
-	::testing::AddGlobalTestEnvironment(
-		new test::Environment(test::ParseParameters(argc, argv))
-	);
+	//::testing::InitGoogleTest(&argc, argv);
+	//::testing::AddGlobalTestEnvironment(
+		//new test::Environment(test::ParseParameters(argc, argv))
+	//);
 	
 	std::cout << "Hello World!\n";
+	WebDriver chrome = Start(Chrome());
+	chrome.Navigate("http://google.com").FindElement(ByCss("input[name=q]")).SendKeys("Hello, world!").Submit();
 
-	return RUN_ALL_TESTS();
+	int a;
+	std::cin >> a;
+	//return RUN_ALL_TESTS();
 }
