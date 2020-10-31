@@ -3,14 +3,16 @@
 
 #include "../libs/WebGTestClient/WebDriver.h"
 #include "../libs/WebGTestClient/capabilities.h"
+#include "../libs/WebGTestClient/browsers/chrome.h"
 #include <gtest/gtest.h>
 #include <string>
 #include <algorithm>
 
 namespace test {
 
-	const char* const kDefaultTestWebDriverUrl = "http://localhost:7777/";
-	const char* const kDefaultTestPagesUrl = "http://localhost:8080/";
+	const char* const kDefaultTestWebDriverUrl = "http://localhost:7777/wd/hub";
+	//You need start apache server on your machine
+	const char* const kDefaultTestPagesUrl = "http://localhost:8080/"; 
 
 	struct Parameters {
 		std::string web_driver_url;
@@ -48,6 +50,16 @@ namespace test {
 		}
 
 		webdriver::WebDriver CreateDriver() {
+			return webdriver::WebDriver(
+				parameters_.desired,
+				parameters_.required,
+				parameters_.web_driver_url
+			);
+		}
+		
+		webdriver::WebDriver CreateAndStart() {
+			using namespace webdriver;
+			parameters_.desired = Chrome();
 			return webdriver::WebDriver(
 				parameters_.desired,
 				parameters_.required,
@@ -94,6 +106,7 @@ namespace test {
 	inline webdriver::WebDriver& GetDriver() { return Environment::Instance().GetDriver(); }
 	inline webdriver::WebDriver& GetFreshDriver() { return Environment::Instance().GetFreshDriver(); }
 	inline webdriver::WebDriver CreateDriver() { return Environment::Instance().CreateDriver(); }
+	inline webdriver::WebDriver CreateAndStart() { return Environment::Instance().CreateAndStart(); }
 	inline bool TestRealBrowsers() { return GetParameters().test_real_browsers; }
 	inline std::string GetBrowserName() { return GetDriver().GetCapabilities().GetBrowserName(); }
 	inline bool IsFirefox() { return GetBrowserName() == webdriver::browser::Firefox; }
