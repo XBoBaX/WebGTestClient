@@ -27,11 +27,11 @@ TEST(WebDriver, DeletesSessionOnDestruction) {
 }
 
 TEST(WebDriver, IsCopyable) {
-	WebDriver driver1(GetDriver());
+	WebDriver driver1(GetChromeDriver());
 	const WebDriver driver2 = driver1;
 	WebDriver driver3 = driver1;
 	driver3 = driver2;
-	ASSERT_NO_THROW(GetDriver().GetSessions());
+	ASSERT_NO_THROW(GetChromeDriver().GetSessions());
 	ASSERT_NO_THROW(driver1.GetSessions());
 	ASSERT_NO_THROW(driver2.GetSessions());
 	ASSERT_NO_THROW(driver3.GetSessions());

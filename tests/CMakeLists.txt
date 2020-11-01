@@ -39,10 +39,14 @@ set(HEADER_FILES
 
 set(SOURCE_FILES
 	main.cpp
-	diplomWork_test.cpp
-	client_test.cpp
+	#client_test.cpp
 	environment.h
 	webgtestclient_test.cpp
+	#capabilities_test.cpp
+	#client_test.cpp
+	#examples_test.cpp
+	#http_connection_test.cpp
+	session_test.cpp
 	)
 
 file(COPY pages DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
