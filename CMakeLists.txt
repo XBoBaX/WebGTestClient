@@ -22,11 +22,8 @@ if(MSVC)
   endforeach()
 endif()
 
-
 include_directories(libs)
 add_subdirectory(tests)
-
-#add_test(TestSerialization "./diplomWork")
 
 install(DIRECTORY
 		${CMAKE_SOURCE_DIR}/libs/

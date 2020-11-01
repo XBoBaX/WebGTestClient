@@ -54,5 +54,6 @@ int main(int argc, char** argv) {
 	//chrome.Navigate("http://google.com").FindElement(ByCss("input[name=q]")).SendKeys("Hello, world!").Submit();
 	//int a;
 	//std::cin >> a;
+	//return 0;
 	return RUN_ALL_TESTS();
 }
