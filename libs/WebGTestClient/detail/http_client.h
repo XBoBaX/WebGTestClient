@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		struct HttpResponse {

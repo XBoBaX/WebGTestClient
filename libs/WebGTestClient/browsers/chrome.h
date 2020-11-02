@@ -3,7 +3,7 @@
 
 #include "../capabilities.h"
 
-namespace webdriver {
+namespace webdriverG {
 	namespace chrome {
 
 		struct PerfLoggingPrefs : JsonObject {

@@ -3,7 +3,7 @@
 
 namespace test {
 
-	using namespace webdriver;
+	using namespace webdriverG;
 
 	TEST(Capabilities, AllowsToSetAndGetCustomValues) {
 		Capabilities c;

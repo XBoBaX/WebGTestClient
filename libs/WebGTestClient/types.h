@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 
 	typedef unsigned long long TimePoint;
 	typedef unsigned Duration;

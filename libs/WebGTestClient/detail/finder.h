@@ -7,7 +7,7 @@
 #include "../by.h"
 #include <vector>
 
-namespace webdriver {
+namespace webdriverG {
 
 	class Element;
 

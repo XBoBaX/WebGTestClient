@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		class Fmt {
@@ -43,19 +43,19 @@ namespace webdriver {
 
 #define WEBDRIVER_FUNCTION_CONTEXT_END() \
 	} catch (const std::exception& e) { \
-		throw ::webdriver::WebDriverException(std::string(e.what()) \
+		throw ::webdriverG::WebDriverException(std::string(e.what()) \
 			+ " called from " + WEBDRIVER_CURRENT_FUNCTION); \
 	}
 
 #define WEBDRIVER_FUNCTION_CONTEXT_END_EX(details) \
 	} catch (const std::exception& e) { \
-		throw ::webdriver::WebDriverException(std::string(e.what()) \
+		throw ::webdriverG::WebDriverException(std::string(e.what()) \
 			+ " called from " + WEBDRIVER_CURRENT_FUNCTION \
 			+ " (" + std::string(details) + ")"); \
 	}
 
 #define WEBDRIVER_THROW(message) \
-	throw ::webdriver::WebDriverException(::webdriver::detail::Fmt() \
+	throw ::webdriverG::WebDriverException(::webdriverG::detail::Fmt() \
 		<< std::string(message) \
 		<< " at line " << __LINE__ \
 		<< ", file " << __FILE__ \

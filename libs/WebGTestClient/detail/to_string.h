@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		template<typename T>
@@ -22,17 +22,17 @@ namespace webdriver {
 	} // detail
 } 
 
-namespace webdriver_to_string_impl {
+namespace webdriverG_to_string_impl {
 
 	template<typename T>
 	std::ostream& operator << (std::ostream& stream, const T& value) {
-		webdriver::detail::to_string_impl::WriteNonStreamableValue(value, stream);
+		webdriverG::detail::to_string_impl::WriteNonStreamableValue(value, stream);
 		return stream;
 	}
 
 } 
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 		namespace to_string_impl {
 
@@ -49,7 +49,7 @@ namespace webdriver {
 
 			template<typename T>
 			void ToStreamImpl(const T& value, std::ostream& stream, DefaultTag) {
-				using namespace webdriver_to_string_impl;
+				using namespace webdriverG_to_string_impl;
 				stream << value;
 			}
 

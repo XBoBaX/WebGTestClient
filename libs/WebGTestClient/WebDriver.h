@@ -4,7 +4,7 @@
 #include "client.h"
 #include "session.h"
 
-namespace webdriver {
+namespace webdriverG {
 
 	// The main class for interactions with a server. Automatically connects to a server,
 	// creates and deletes a session and gives access to session's API.

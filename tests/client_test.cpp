@@ -4,7 +4,7 @@
 
 namespace test {
 
-	using namespace webdriver;
+	using namespace webdriverG;
 
 	class TestClient : public ::testing::Test {
 	protected:

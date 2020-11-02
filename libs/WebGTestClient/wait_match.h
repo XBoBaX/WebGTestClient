@@ -10,7 +10,7 @@
 #include <gmock/gmock-matchers.h>
 #include <sstream>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		template<typename T, typename M>
@@ -56,7 +56,7 @@ namespace webdriver {
 
 #endif // WEBDRIVER_ENABLE_GMOCK_MATCHERS
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		template<typename T, typename P>

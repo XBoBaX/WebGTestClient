@@ -6,7 +6,7 @@
 #include "detail/resource.h"
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 
 	class Window { // copyable
 	public:

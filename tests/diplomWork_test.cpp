@@ -4,7 +4,7 @@
 
 namespace test {
 
-	using namespace webdriver;
+	using namespace webdriverG;
 
 	TEST(test_case_name, test_name) 
 	{

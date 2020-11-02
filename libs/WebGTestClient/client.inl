@@ -4,7 +4,7 @@
 #include "detail/types.h"
 #include <algorithm>
 
-namespace webdriver {
+namespace webdriverG {
 
 	inline
 		Client::Client(const std::string& url)

@@ -7,7 +7,7 @@
 #include "picojson.h"
 #include <algorithm>
 
-namespace webdriver {
+namespace webdriverG {
 
 	template<typename T>
 	picojson::value ToJson(const T& value);

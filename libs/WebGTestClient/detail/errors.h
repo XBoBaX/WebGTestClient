@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 
 	struct WebDriverException : std::runtime_error {
 		explicit WebDriverException(const std::string& message)

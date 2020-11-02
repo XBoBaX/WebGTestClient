@@ -2,7 +2,7 @@
 #include "detail/finder.h"
 #include "detail/error_handling.h"
 
-namespace webdriver {
+namespace webdriverG {
 
 	inline
 		picojson::value CustomToJson(const Element& element) {

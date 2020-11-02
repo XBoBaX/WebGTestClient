@@ -4,7 +4,7 @@
 #include "conversions.h"
 #include "picojson.h"
 
-namespace webdriver {
+namespace webdriverG {
 
 	class Session;
 

@@ -5,7 +5,7 @@
 #include "../conversions.h"
 #include "../keys.h"
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		class Keyboard { // copyable

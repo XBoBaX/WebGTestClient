@@ -7,7 +7,7 @@
 #include <string>
 #include <memory>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		template<typename Value, typename DescriptiveGetter>

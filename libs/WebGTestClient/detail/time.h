@@ -15,7 +15,7 @@
 
 #endif
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		inline

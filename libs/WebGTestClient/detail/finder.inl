@@ -3,7 +3,7 @@
 #include "types.h"
 #include <algorithm>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		inline

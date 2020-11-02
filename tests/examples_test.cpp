@@ -8,7 +8,7 @@
 
 namespace test {
 
-	using namespace webdriver;
+	using namespace webdriverG;
 
 	class TestExamples : public ::testing::Test {
 	protected:

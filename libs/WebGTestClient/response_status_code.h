@@ -1,7 +1,7 @@
 #ifndef RESPONSE_STATUS_CODE_H
 #define RESPONSE_STATUS_CODE_H 
 
-namespace webdriver {
+namespace webdriverG {
 	namespace response_status_code {
 
 		enum Value {

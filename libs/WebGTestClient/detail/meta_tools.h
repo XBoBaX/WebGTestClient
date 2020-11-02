@@ -6,7 +6,7 @@
 #include <iterator>
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		template<class T>

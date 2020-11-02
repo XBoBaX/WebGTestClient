@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 
 	class By { // copyable
 	public:

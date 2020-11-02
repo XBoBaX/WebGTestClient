@@ -8,7 +8,7 @@
 #include "../response_status_code.h"
 #include "../picojson.h"
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		class Resource : public SharedObjectBase { // noncopyable

@@ -7,7 +7,7 @@
 #include "shared.h"
 #include <curl/curl.h>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		class HttpConnection // noncopyable

@@ -7,7 +7,7 @@
 #include "shared.h"
 #include "../element.h"
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		class SessionFactory // noncopyable

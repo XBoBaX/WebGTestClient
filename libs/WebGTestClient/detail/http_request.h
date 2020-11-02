@@ -6,7 +6,7 @@
 #include <string>
 #include <algorithm>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		const char* const kContentTypeJson = "application/json;charset=UTF-8";

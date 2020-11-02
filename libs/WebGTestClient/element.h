@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace webdriver {
+namespace webdriverG {
 
 	// An element from DOM
 	class Element { // copyable

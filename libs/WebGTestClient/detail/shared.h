@@ -3,7 +3,7 @@
 
 #include <algorithm>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace detail {
 
 		class SharedObjectBase { // noncopyable

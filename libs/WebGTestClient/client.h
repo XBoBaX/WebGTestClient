@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-namespace webdriver {
+namespace webdriverG {
 
 	const char* const kDefaultWebDriverUrl = "http://localhost:7777/wd/hub/";
 

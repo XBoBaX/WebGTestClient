@@ -3,7 +3,7 @@
 #include "detail/types.h"
 #include <algorithm>
 
-namespace webdriver {
+namespace webdriverG {
 
 	inline
 		Session::Session(const detail::Shared<detail::Resource>& resource)

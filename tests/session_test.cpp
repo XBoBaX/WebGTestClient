@@ -5,7 +5,7 @@
 
 namespace test {
 
-	using namespace webdriver;
+	using namespace webdriverG;
 
 	class TestSession : public ::testing::Test {
 	protected:
@@ -85,7 +85,7 @@ namespace test {
 		return it != cookies.end() ? *it : default_value;
 	}
 
-	namespace webdriver {
+	namespace webdriverG {
 
 		void PrintTo(const Cookie& c, ::std::ostream* os) {
 			*os << ToJson(c).serialize();

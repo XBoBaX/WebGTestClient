@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace webdriver {
+namespace webdriverG {
 	namespace keys {
 
 		const char* const Null = "\xee\x80\x80";

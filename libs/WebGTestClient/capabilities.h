@@ -5,7 +5,7 @@
 #include "picojson.h"
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 
 	namespace browser {
 		typedef std::string Value;

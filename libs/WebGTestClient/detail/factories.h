@@ -4,7 +4,7 @@
 #include "shared.h"
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 
 	class Element;
 

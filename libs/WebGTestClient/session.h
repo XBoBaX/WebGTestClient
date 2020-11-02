@@ -14,7 +14,7 @@
 #include "picojson.h"
 #include <string>
 
-namespace webdriver {
+namespace webdriverG {
 
 	class Client;
 

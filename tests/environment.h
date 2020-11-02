@@ -16,8 +16,8 @@ namespace test {
 
 	struct Parameters {
 		std::string web_driver_url;
-		webdriver::Capabilities required;
-		webdriver::Capabilities desired;
+		webdriverG::Capabilities required;
+		webdriverG::Capabilities desired;
 		std::string test_pages_url;
 		bool test_real_browsers;
 
@@ -39,38 +39,38 @@ namespace test {
 			, parameters_(parameters)
 		{}
 
-		webdriver::WebDriver& GetDriver() {
+		webdriverG::WebDriver& GetDriver() {
 			return driver_ ? *driver_ : GetFreshDriver();
 		}
 		
-		webdriver::WebDriver& GetChromeDriver() {
+		webdriverG::WebDriver& GetChromeDriver() {
 			return driver_ ? *driver_ : GetFreshChromeDriver();
 		}
 
-		webdriver::WebDriver& GetFreshChromeDriver() {
+		webdriverG::WebDriver& GetFreshChromeDriver() {
 			DeleteDriver();
-			driver_ = new webdriver::WebDriver(CreateDriver());
+			driver_ = new webdriverG::WebDriver(CreateAndStart());
 			return *driver_;
 		}
 
-		webdriver::WebDriver& GetFreshDriver() {
+		webdriverG::WebDriver& GetFreshDriver() {
 			DeleteDriver();
-			driver_ = new webdriver::WebDriver();
+			driver_ = new webdriverG::WebDriver();
 			return *driver_;
 		}
 
-		webdriver::WebDriver CreateDriver() {
-			return webdriver::WebDriver(
+		webdriverG::WebDriver CreateDriver() {
+			return webdriverG::WebDriver(
 				parameters_.desired,
 				parameters_.required,
 				parameters_.web_driver_url
 			);
 		}
 		
-		webdriver::WebDriver CreateAndStart() {
-			using namespace webdriver;
+		webdriverG::WebDriver CreateAndStart() {
+			using namespace webdriverG;
 			parameters_.desired = Chrome();
-			return webdriver::WebDriver(
+			return webdriverG::WebDriver(
 				parameters_.desired,
 				parameters_.required,
 				parameters_.web_driver_url
@@ -106,23 +106,23 @@ namespace test {
 
 	private:
 		static Environment* instance_;
-		webdriver::WebDriver* driver_;
+		webdriverG::WebDriver* driver_;
 		Parameters parameters_;
 	};
 
 	inline Parameters GetParameters() { return Environment::Instance().GetParameters(); }
 	inline std::string GetWebDriverUrl() { return Environment::Instance().GetWebDriverUrl(); }
 	inline std::string GetTestPageUrl(const std::string& page_name) { return Environment::Instance().GetTestPageUrl(page_name); }
-	inline webdriver::WebDriver& GetDriver() { return Environment::Instance().GetDriver(); }
-	inline webdriver::WebDriver& GetChromeDriver() { return Environment::Instance().GetChromeDriver(); }
-	inline webdriver::WebDriver& GetFreshDriver() { return Environment::Instance().GetFreshDriver(); }
-	inline webdriver::WebDriver& GetFreshChromeDriver() { return Environment::Instance().GetFreshChromeDriver(); }
-	inline webdriver::WebDriver CreateDriver() { return Environment::Instance().CreateDriver(); }
-	inline webdriver::WebDriver CreateAndStart() { return Environment::Instance().CreateAndStart(); }
+	inline webdriverG::WebDriver& GetDriver() { return Environment::Instance().GetDriver(); }
+	inline webdriverG::WebDriver& GetChromeDriver() { return Environment::Instance().GetChromeDriver(); }
+	inline webdriverG::WebDriver& GetFreshDriver() { return Environment::Instance().GetFreshDriver(); }
+	inline webdriverG::WebDriver& GetFreshChromeDriver() { return Environment::Instance().GetFreshChromeDriver(); }
+	inline webdriverG::WebDriver CreateDriver() { return Environment::Instance().CreateDriver(); }
+	inline webdriverG::WebDriver CreateAndStart() { return Environment::Instance().CreateAndStart(); }
 	inline bool TestRealBrowsers() { return GetParameters().test_real_browsers; }
 	inline std::string GetBrowserName() { return GetDriver().GetCapabilities().GetBrowserName(); }
-	inline bool IsFirefox() { return GetBrowserName() == webdriver::browser::Firefox; }
-	inline bool IsPhantom() { return GetBrowserName() == webdriver::browser::Phantom; }
+	inline bool IsFirefox() { return GetBrowserName() == webdriverG::browser::Firefox; }
+	inline bool IsPhantom() { return GetBrowserName() == webdriverG::browser::Phantom; }
 
 } 
 

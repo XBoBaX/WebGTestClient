@@ -5,8 +5,8 @@
 
 namespace test {
 
-	using namespace webdriver;
-	using namespace webdriver::detail;
+	using namespace webdriverG;
+	using namespace webdriverG::detail;
 
 	TEST(HttpConnection, CanBeCreated) {
 		HttpConnection connection;
