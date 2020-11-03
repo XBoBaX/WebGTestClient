@@ -42,6 +42,7 @@ namespace test {
 
 int main(int argc, char** argv)
 {
+	::testing::GTEST_FLAG(output) = "xml:report.xml";
 	::testing::InitGoogleTest(&argc, argv);
 	::testing::AddGlobalTestEnvironment(
 		new test::Environment(test::ParseParameters(argc, argv))

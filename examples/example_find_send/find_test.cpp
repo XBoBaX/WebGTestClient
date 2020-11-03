@@ -1,19 +1,24 @@
 #include "../libs/WebGTestClient.h"
 #include "../libs/WebGTestClient/WebDriver.h"
-#include <gtest/gtest.h>
 #include "../../tests/environment.h"
+#include "../libs/ReportingSystem.h"
+#include <gtest/gtest.h>
 #include <chrono>
 #include <thread>
 
 namespace test {
 
 	using namespace webdriverG;
-	
+	using namespace reportS;
+
+	ReportDriver systemRep("examples/example_find_send/find_test.cpp");
+
 	class TestITC : public ::testing::Test {
 	protected:
 		TestITC() : browser(GetChromeDriver()) {
 			using namespace std::chrono_literals;
 			std::this_thread::sleep_for(std::chrono::seconds(1));
+
 		}
 
 		WebDriver browser;
@@ -21,6 +26,8 @@ namespace test {
 
 	TEST_F(TestITC, OpenSite)
 	{
+		systemRep.StartRegister("OpenSite", "Feature Testing", 1);
+
 		browser.Navigate("https://itc.ua");
 		Element elem = browser.FindElement(ByClass("post"));
 		elem.Click();
@@ -28,18 +35,21 @@ namespace test {
 		std::string tittle = browser.FindElement(ByClass("entry-title")).GetText();
 
 		ASSERT_NE(tittle, "") << "tittle is empty";
+
 	}
 
 	TEST_F(TestITC, OpenAuthor)
 	{
+		systemRep.StartRegister("OpenAuthor", "Feature Testing", 1);
+
 		browser.FindElement(ByClass("author")).Click();
 		std::string tittleH1 = browser.FindElement(ByClass("page-title")).GetText();
-		
 		ASSERT_NE(tittleH1, "") << "Can't open author page";
 	}
 
 	TEST_F(TestITC, SearchPost)
 	{
+		GTEST_SKIP();
 		browser.FindElement(ByClass("search_btn")).Click();
 		Element input = browser.FindElement(ById("s"));
 		input.SendKeys("\xd0\xa1\xd0\xb8\xd1\x81\xd1\x82\xd0\xb5\xd0\xbc\xd1\x8b\x20\xd1\x81\xd0\xb8\xd0\xbd\xd1\x85\xd1\x80\xd0\xbe\xd0\xbf\xd0\xb5\xd1\x80\xd0\xb5\xd0\xb2\xd0\xbe\xd0\xb4\xd0\xb0");
@@ -51,6 +61,7 @@ namespace test {
 
 	TEST_F(TestITC, SearchPostWithFilter)
 	{
+		GTEST_SKIP();
 		Element input = browser.FindElement(ById("s"));
 		input.Clear();
 		input.SendKeys("iphone");
@@ -66,6 +77,7 @@ namespace test {
 
 	TEST_F(TestITC, CheckNavigation)
 	{
+		GTEST_SKIP();
 		std::string nav[5]{ "news", "articles", "stati", "video", "blogs" };
 		std::string navUTF8[5]{ "\xD0\x9D\xD0\xBE\xD0\xB2\xD0\xBE\xD1\x81\xD1\x82\xD0\xB8", "\xD0\x9E\xD0\xB1\xD0\xB7\xD0\xBE\xD1\x80\xD1\x8B",
 			"\xD0\xA1\xD1\x82\xD0\xB0\xD1\x82\xD1\x8C\xD0\xB8", "\xD0\x92\xD0\xB8\xD0\xB4\xD0\xB5\xD0\xBE", "\xD0\x91\xD0\xBB\xD0\xBE\xD0\xB3\xD0\xB8" };

@@ -29,9 +29,17 @@ set(SOURCE_FILES
 	find_test.cpp
 	main.cpp
 	../../tests/environment.h
-	)
+	../../libs/ReportingSystem.h
+	../../libs/ReportingSystem/reportdriver.h
+	../../libs/ReportingSystem/reportdriver.cpp
+	../../libs/ReportingSystem/sqliteDriver.h
+	../../libs/ReportingSystem/sqliteDriver.cpp
 
+	)
+	
+################################
 # CURL
+################################
 
 include_directories("../../tests/lib/curl-7.55.0/builds/libcurl-vc13-x64-release-dll-ipv6-sspi-winssl/include")
 link_directories("../../tests/lib/curl-7.55.0/builds/libcurl-vc13-x64-release-dll-ipv6-sspi-winssl/lib")
@@ -40,6 +48,17 @@ list(APPEND LIBS libcurl wsock32 ws2_32)
 list(APPEND DEPS curl_project)
 
 add_definitions(-DCURL_STATICLIB)
+
+################################
+# SQL
+################################
+
+include_directories("../../tests/lib/SQLite")
+link_directories("../../tests/lib/SQLite")
+
+list(APPEND LIBS SQLite3)
+
+#message(${SQLITE3_INCLUDE_DIRS})
 
 ################################
 # Testing
