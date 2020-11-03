@@ -8,23 +8,24 @@ namespace reportS {
 		CrateTable();
 	}
 
-	void SqliteDriver::InsertData() 
+	void SqliteDriver::InsertData(std::string testCaseName, std::string typeTest, int countReq)
 	{
+		using namespace std;
 		char* messageError;
 
 		int exit = sqlite3_open(cNameSqlBase, &DB);
 
-		std::string sql = "INSERT INTO COLLECTIONS (TESTCASE, STATUS, TYPETEST, TIMEMS, COUNTREQ) VALUES ('','','',0,0);";
+		string sql = "INSERT INTO COLLECTIONS (TESTCASE, STATUS, TYPETEST, TIMEMS, COUNTREQ) VALUES ('"+ testCaseName +"','','"+typeTest+"',0,"+std::to_string(countReq)+");";
 
 		exit = sqlite3_exec(DB, sql.c_str(), NULL, 0, &messageError);
 		if (exit != SQLITE_OK) 
 		{
-			std::cerr << "Error Insert\n";
+			cerr << "Error Insert\n";
 			sqlite3_free(messageError);
 		}
 		else
 		{
-			std::cout << "Records created Successfully";
+			cout << "Records created Successfully";
 		}
 	}
 
@@ -43,7 +44,7 @@ namespace reportS {
 	void SqliteDriver::CrateTable()
 	{
 		std::string sql = "CREATE TABLE IF NOT EXISTS COLLECTIONS("
-			"ID INTEGER PRIMARY KEY AUTOINCRIMENT,"
+			"ID INTEGER PRIMARY KEY AUTOINCREMENT,"
 			"TESTCASE	TEXT NOT NULL,"
 			"STATUS		TEXT NOT NULL,"
 			"TYPETEST	TEXT NOT NULL,"
@@ -59,13 +60,14 @@ namespace reportS {
 
 			if (exit != SQLITE_OK) 
 			{
-				std::cerr << "Error Create Table\n";
+				std::cerr << "Error Create Table\n"<< messageError;
 				sqlite3_free(messageError);
 			}
 			else
 			{
 				std::cout << "Table created Successfully\n";
 			}
+			sqlite3_close(DB);
 		}
 		catch (const std::exception& e)
 		{

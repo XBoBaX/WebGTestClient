@@ -54,6 +54,12 @@ int main(int argc, char** argv)
 	//elem.SendKeys("sha512 helloworld");
 	//elem.Submit();
 	//getchar();
+	int flagReturnTests = RUN_ALL_TESTS();
+	if (flagReturnTests != 0)
+	{
+		return flagReturnTests;
+	}
 
-	return RUN_ALL_TESTS();
+	//TODO Parser xml googleTest and get from table in sql inputs. Then do statistic to data used this value. after do graph  
+	return 0;
 }
