@@ -11,7 +11,7 @@ namespace test {
 	using namespace webdriverG;
 	using namespace reportS;
 
-	ReportDriver systemRep("examples/example_find_send/find_test.cpp");
+	ReportDriver systemRep("examples/example_find_send/find_test.cpp", 1);
 
 	class TestITC : public ::testing::Test {
 	protected:

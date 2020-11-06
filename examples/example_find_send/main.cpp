@@ -40,6 +40,8 @@ namespace test {
 	}
 }
 
+#include "../libs/ReportingSystem.h"
+
 int main(int argc, char** argv)
 {
 	::testing::GTEST_FLAG(output) = "xml:report.xml";
@@ -48,18 +50,22 @@ int main(int argc, char** argv)
 		new test::Environment(test::ParseParameters(argc, argv))
 	);
 
+	using namespace reportS;
+
 	//WebDriver browser = Start(Chrome());
 	//browser.Navigate("https://duckduckgo.org");
 	//Element elem = browser.FindElement(ByCss("input[name=q]"));
 	//elem.SendKeys("sha512 helloworld");
 	//elem.Submit();
 	//getchar();
-	int flagReturnTests = RUN_ALL_TESTS();
+	/*int flagReturnTests = RUN_ALL_TESTS();
 	if (flagReturnTests != 0)
 	{
 		return flagReturnTests;
-	}
+	}*/
 
+	ReportDriver systemRep = ReportDriver();
+	systemRep.ParseResult();
 	//TODO Parser xml googleTest and get from table in sql inputs. Then do statistic to data used this value. after do graph  
 	return 0;
 }
