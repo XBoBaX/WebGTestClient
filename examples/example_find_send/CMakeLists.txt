@@ -34,7 +34,8 @@ set(SOURCE_FILES
 	../../libs/ReportingSystem/reportdriver.cpp
 	../../libs/ReportingSystem/sqliteDriver.h
 	../../libs/ReportingSystem/sqliteDriver.cpp
-
+	../../tests/lib/rapidxml-1.13/rapidxml.hpp
+	../../tests/lib/rapidxml-1.13/rapidxml_print.hpp
 	)
 	
 ################################

@@ -11,6 +11,8 @@
 
 namespace reportS
 {
+	using namespace rapidxml;
+
 	class ReportDriver 
 	{
 	public:
@@ -19,9 +21,16 @@ namespace reportS
 		void StartRegister(std::string, std::string, int);
 		void ParseResult();
 	private:
+		void SetTestsuites(const xml_node<> *);
+		void SetTestcase(int, const xml_node<> *) const;
+		void SetTescaeLoop(const xml_node<> *) const;
+
 		std::string pathToFile;
+		std::string totalTimeStamp{""};
 		int timeSleep { 1 };
-		int idTestNow{ 0 };
+		int countTest { 0 };
+		int idTestNow { 0 };
+		const char *nameNode[3]{"testsuites", "testsuite", "testcase"};
 	};
 
 }

@@ -10,8 +10,6 @@ namespace reportS
 
 	void ReportDriver::ParseResult()
 	{
-		using namespace rapidxml;
-
 		std::ifstream t("report.xml");
 		std::string text((std::istreambuf_iterator<char>(t)),
 			std::istreambuf_iterator<char>());
@@ -22,28 +20,78 @@ namespace reportS
 
 		xml_document<> doc;
 		doc.parse<0>(&text[0]);
-		
-		std::cout << "\n\n" << doc.first_node()->name()<<"\n";
 
 		std::cout << "Name of my first node is: " << doc.first_node()->name() << "\n";
 
 		//TODO how much tests
-		//testsuites - count tests, timestamp 
-		//testsuite - name, failed, disabled, skipped, errors, time
 		//loop by count test:
 		////name, result, time, CHECK CHILD NODE _SKIPPED_
-		xml_node<>* node = doc.first_node("testsuites")->first_node("testsuite");
+		
+		//Testsites
+		xml_node<>* nodeTestsuites = doc.first_node(nameNode[0]);
+		SetTestsuites(nodeTestsuites);
 
-		std::cout << "\n1\n"<<node->first_node()->name();
+		//Testsite
+		xml_node<>* nodeTestsite = nodeTestsuites->first_node(nameNode[1]);
 
-		std::cout << "Node testsuites has value " << node->value() << "\n";
-		for (xml_attribute<>* attr = node->first_attribute();
+
+		//TestCase
+		xml_node<>* nodeTestCase = nodeTestsite->first_node(nameNode[2]);
+		std::cout << "\n"<<nodeTestCase;
+		SetTescaeLoop(nodeTestCase);
+
+		/*
+		//Get attr testsite
+		for (xml_attribute<>* attr = nodeTestsite->first_attribute();
 			attr; attr = attr->next_attribute())
 		{
-			std::cout << "Node testsuites has attribute " << attr->name() << " ";
+			std::cout << "testsuites has attribute " << attr->name() << " ";
 			std::cout << "with value " << attr->value() << "\n";
 		}
 
-		std::cout << "\n111\n";
+		xml_node<>* nodeTestCase = nodeTestsuites->first_node(nameNode[2]);
+
+
+		std::cout << "\n111\n";*/
+	}
+
+	void ReportDriver::SetTescaeLoop(const xml_node<>* nodeTestCase) const
+	{
+		SetTestcase(1, nodeTestCase);
+		for (int i = 0; i < countTest-1; i++)
+		{
+			nodeTestCase = nodeTestCase->next_sibling();
+			SetTestcase(i+2, nodeTestCase);
+		}
+	}
+
+	// Parse xml node "Testcase", save result in sqliteDriver
+	void ReportDriver::SetTestcase(int idTest, const xml_node<> *nodeTestCase) const
+	{
+		std::cout << "\n" << idTest<<"\n";
+		std::string nameTest = nodeTestCase->first_attribute("name")->value();
+		std::string className = nodeTestCase->first_attribute("classname")->value();
+		std::string result = nodeTestCase->first_attribute("result")->value();
+		std::string timestamp = nodeTestCase->first_attribute("timestamp")->value();
+		float timeMs = std::stof(nodeTestCase->first_attribute("time")->value());
+
+		std::string note {""};
+		
+		const xml_node<>* child = nodeTestCase->first_node();
+		if (child != 0)
+		{
+			note = child->name();
+		}
+
+
+		SqliteDriver SQLDriver;
+		SQLDriver.InserReportDataTestcase(nameTest, className, result, timestamp, note, timeMs, idTest);
+	}
+	
+	// Parse xml node "Testsuites", save result to this object (class)
+	void ReportDriver::SetTestsuites(const xml_node<> *nodeTestsites)
+	{
+		countTest = atoi(nodeTestsites->first_attribute("tests")->value());
+		totalTimeStamp = nodeTestsites->first_attribute("timestamp")->value();
 	}
 }

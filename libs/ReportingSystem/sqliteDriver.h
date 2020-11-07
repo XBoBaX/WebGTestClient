@@ -14,9 +14,12 @@ namespace reportS {
 		~SqliteDriver() {};
 
 		void InsertData(std::string, std::string, int);
+		void InserReportDataTestcase(const std::string&, const std::string&, const std::string&, 
+			const std::string&, const std::string&, float, int);
 	private:
 		void CreateDB();
-		void CrateTable();
+		void CrateTable(const std::string& sql);
+
 		const char *cNameSqlBase = "reportTests.db";
 		sqlite3* DB;
 	};
