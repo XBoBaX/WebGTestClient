@@ -34,7 +34,7 @@ namespace test {
 
 		std::string tittle = browser.FindElement(ByClass("entry-title")).GetText();
 
-		ASSERT_NE(tittle, "") << "tittle is empty";
+		EXPECT_NE(tittle, "") << "tittle is empty";
 
 	}
 
@@ -44,20 +44,19 @@ namespace test {
 
 		browser.FindElement(ByClass("author")).Click();
 		std::string tittleH1 = browser.FindElement(ByClass("page-title")).GetText();
-		ASSERT_NE(tittleH1, "") << "Can't open author page";
+		EXPECT_NE(tittleH1, "") << "Can't open author page";
 	}
 
 	TEST_F(TestITC, SearchPost)
 	{
-		GTEST_SKIP();
 		systemRep.StartRegister("OpenAuthor", "Feature Testing", 1);
 		browser.FindElement(ByClass("search_btn")).Click();
 		Element input = browser.FindElement(ById("s"));
-		input.SendKeys("\xd0\xa1\xd0\xb8\xd1\x81\xd1\x82\xd0\xb5\xd0\xbc\xd1\x8b\x20\xd1\x81\xd0\xb8\xd0\xbd\xd1\x85\xd1\x80\xd0\xbe\xd0\xbf\xd0\xb5\xd1\x80\xd0\xb5\xd0\xb2\xd0\xbe\xd0\xb4\xd0\xb0");
+		input.SendKeys("\xd1\x82\xd0\xb5\xd1\x81\xd1\x82\x20\xd0\x9b\xd0\xb0\xd0\xb2\xd0\xbb\xd0\xb5\xd0\xb9\xd1\x81");
 		browser.FindElement(ByClass("btn-default")).Click();
 		std::string tittleH2 = browser.FindElement(ByClass("entry-title")).GetText();
 
-		ASSERT_EQ(tittleH2, "\xd0\xa1\xd0\xb8\xd1\x81\xd1\x82\xd0\xb5\xd0\xbc\xd1\x8b\x20\xd1\x81\xd0\xb8\xd0\xbd\xd1\x85\xd1\x80\xd0\xbe\xd0\xbf\xd0\xb5\xd1\x80\xd0\xb5\xd0\xb2\xd0\xbe\xd0\xb4\xd0\xb0");
+		EXPECT_EQ(tittleH2, "\xd1\x82\xd0\xb5\xd1\x81\xd1\x82\x20\xd0\x9b\xd0\xb0\xd0\xb2\xd0\xbb\xd0\xb5\xd0\xb9\xd1\x81");
 	}
 
 	TEST_F(TestITC, SearchPostWithFilter)
@@ -73,7 +72,7 @@ namespace test {
 		browser.FindElement(ByClass("btn-default")).Submit();
 		std::string tittleH2 = browser.FindElement(ByClass("entry-title")).GetText();
 		
-		ASSERT_EQ(tittleH2, "\x41\x70\x70\x6c\x65\x20\xd0\xbd\xd0\xb0\xd0\xb7\xd0\xb2\xd0\xb0\xd0\xbb\xd0\xb0\x20\xd0\xb4\xd0\xb0\xd1\x82\xd1\x83\x20\xd0\xbf\xd1\x80\xd0\xb5\xd0\xb7\xd0\xb5\xd0\xbd\xd1\x82\xd0\xb0\xd1\x86\xd0\xb8\xd0\xb8\x20\xd0\xbd\xd0\xbe\xd0\xb2\xd1\x8b\xd1\x85\x20\x69\x50\x68\x6f\x6e\x65\x20\xe2\x80\x94\x20\x31\x33\x20\xd0\xbe\xd0\xba\xd1\x82\xd1\x8f\xd0\xb1\xd1\x80\xd1\x8f");
+		EXPECT_EQ(tittleH2, "\x41\x70\x70\x6c\x65\x20\xd0\xbd\xd0\xb0\xd0\xb7\xd0\xb2\xd0\xb0\xd0\xbb\xd0\xb0\x20\xd0\xb4\xd0\xb0\xd1\x82\xd1\x83\x20\xd0\xbf\xd1\x80\xd0\xb5\xd0\xb7\xd0\xb5\xd0\xbd\xd1\x82\xd0\xb0\xd1\x86\xd0\xb8\xd0\xb8\x20\xd0\xbd\xd0\xbe\xd0\xb2\xd1\x8b\xd1\x85\x20\x69\x50\x68\x6f\x6e\x65\x20\xe2\x80\x94\x20\x31\x33\x20\xd0\xbe\xd0\xba\xd1\x82\xd1\x8f\xd0\xb1\xd1\x80\xd1\x8f");
 		getchar();
 	}
 
@@ -90,7 +89,32 @@ namespace test {
 			browser.Navigate("https://itc.ua/" + art + "/");
 			std::string tittle = browser.FindElement(ByClass("page-title")).GetText();
 
-			ASSERT_EQ(tittle, navUTF8[i++]) << "tittle is empty";
+			EXPECT_EQ(tittle, navUTF8[i++]) << "tittle is empty";
 		}
+	}
+
+	TEST_F(TestITC, OnlyForDemo)
+	{
+		systemRep.StartRegister("OnlyForDemo", "SW Element Test", 1);
+		EXPECT_EQ(1, 1);
+	}
+
+	TEST_F(TestITC, OnlyForDemo2)
+	{
+		systemRep.StartRegister("OnlyForDemo2", "SW Element Test", 3);
+		EXPECT_EQ(1, 1);
+	}
+
+
+	TEST_F(TestITC, OnlyForDemo3)
+	{
+		systemRep.StartRegister("OnlyForDemo3", "SW Element Test", 1);
+		EXPECT_EQ(1, 0);
+	}
+
+	TEST_F(TestITC, OnlyForDemo4)
+	{
+		systemRep.StartRegister("OnlyForDemo4", "SW Element Test", 2);
+		EXPECT_EQ(1, 1);
 	}
 }

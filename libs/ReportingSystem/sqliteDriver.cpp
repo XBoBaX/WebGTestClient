@@ -2,6 +2,8 @@
 
 namespace reportS {
 
+	static int callback(void*, int, char**, char**);
+
 	SqliteDriver::SqliteDriver()
 	{
 		CreateDB();
@@ -25,6 +27,63 @@ namespace reportS {
 			"TIMEMS		REAL NOT NULL,"
 			"IDTEST		INT NOT NULL);";
 		CrateTable(sql);
+	}
+
+	//This is crutch for fill arrayTime in SqliteDriver
+	std::vector<std::string> arr;
+	static int callback(void* NotUsed, int argc, char** argv, char** azColName)
+	{
+		for (int i = 0; i < argc; i++)
+		{
+			//std::cout << azColName[i] << " " << argv[i] << std::endl;
+			arr.push_back(argv[i]);
+		}
+		//std::cout << std::endl;
+		return 0;
+	}
+
+	void SqliteDriver::GetFromCollections(std::string name)
+	{
+		ClearArr();
+		int exit = sqlite3_open(cNameSqlBase, &DB);
+
+		std::string sql = "SELECT " + name + " FROM COLLECTIONS;";
+
+		sqlite3_exec(DB, sql.c_str(), callback, NULL, NULL);
+
+		arrayTime = arr;
+
+	}
+
+	void SqliteDriver::GetListTimeStamp()
+	{
+		ClearArr();
+		int exit = sqlite3_open(cNameSqlBase, &DB);
+
+		std::string sql = "SELECT DISTINCT timestamp FROM REPORTS;";
+		
+		sqlite3_exec(DB, sql.c_str(), callback, NULL, NULL);
+		
+		arrayTime = arr;
+	}
+
+
+	std::string SqliteDriver::GetData(std::string name, std::string date)
+	{
+		ClearArr();
+		int exit = sqlite3_open(cNameSqlBase, &DB);
+
+		std::string sql = "SELECT " + name + " FROM REPORTS WHERE TIMESTAMP = '" + date + "';";
+		sqlite3_exec(DB, sql.c_str(), callback, NULL, NULL);
+
+		arrayTime = arr;
+		return "";
+	}
+
+	void SqliteDriver::ClearArr()
+	{
+		arr.clear();
+		arrayTime.clear();
 	}
 
 	void SqliteDriver::InserReportDataTestcase(const std::string& nameTest, const std::string& className, 
