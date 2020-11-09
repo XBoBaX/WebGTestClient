@@ -81,9 +81,13 @@ namespace reportS
 		std::string selectOp{""};
 		int i{1};
 		selectOp += "<option value=\"0\">Selected period</option>\n";
+	
 		for (auto timeItter : copyArrayTime)
 		{
-			selectOp += "<option value=\"" + timeItter + "\">" + timeItter + "</option>\n";
+			std::string nameFile = "test_report_" + timeItter + ".html";
+			nameFile = ReplaceAll(nameFile, "-", "");
+			nameFile = ReplaceAll(nameFile, ":", "");
+			selectOp += "<option value=\"" + nameFile + "\">" + timeItter + "</option>\n";
 		}
 		
 
@@ -179,6 +183,7 @@ namespace reportS
 			text = ReplaceAll(text, "I1_011", std::to_string(skippedCNT + errorsCNT + failursCNT +  disabledCNT));
 			text = ReplaceAll(text, "I1_012", str_row);
 			text = ReplaceAll(text, "I1_013", str_graph);
+			//text = ReplaceAll(text, "I1_014", str_graph);
 
 			//std::ofstream out("test_report_" + SQLdr.arrayTime[0] + ".html");
 			std::string nameFile = "test_report_" + timeItter + ".html";

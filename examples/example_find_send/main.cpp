@@ -52,16 +52,16 @@ int main(int argc, char** argv)
 
 	using namespace reportS;
 
-	//int flagReturnTests = RUN_ALL_TESTS();
+	int flagReturnTests = RUN_ALL_TESTS();
 	
 
 	ReportDriver systemRep = ReportDriver();
-	//systemRep.ParseResult();
+	systemRep.ParseResult();
 	systemRep.CreateReport();
 	
-	/*if (flagReturnTests != 0)
+	if (flagReturnTests != 0)
 	{
 		return flagReturnTests;
-	}*/
+	}
 	return 0;
 }
